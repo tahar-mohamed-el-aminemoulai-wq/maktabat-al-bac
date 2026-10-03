@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#F6F4EC">
+  <meta name="format-detection" content="telephone=no, email=no, address=no">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <link rel="icon" href="assets/favicon.svg?v=1.0.0" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/tajawal-400-arabic.woff2?v=1.0.0" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/arefruqaa-700-arabic.woff2?v=1.0.0" as="font" type="font/woff2" crossorigin>
+  <title data-text="pages.homeTitle">مكتبة الباك — موارد مجانية للتحضير لامتحان البكالوريا</title>
+  <meta name="description" data-text-attr="content:pages.homeDescription" content="دروس وملخصات ومواضيع بكالوريا سابقة مرتّبة حسب المادة، مع نصائح عملية للمراجعة.">
+  <link rel="stylesheet" href="assets/style.css?v=1.0.0">
+  <script src="assets/data.js?v=1.0.0" defer></script>
+  <script src="assets/site-config.js?v=1.0.0" defer></script>
+  <script src="assets/core.js?v=1.0.0" defer></script>
+  <script src="assets/motion.js?v=1.0.0" defer></script>
+  <script src="assets/script.js?v=1.0.0" defer></script>
+</head>
+<body class="page-home">
+<a class="skip-link" href="#main" data-text="common.skipLink">تخطَّ إلى المحتوى</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <path d="M20 4 L34 12 L34 28 L20 36 L6 28 L6 12 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M20 4 V36 M6 12 L34 28 M34 12 L6 28" stroke="currentColor" stroke-width="0.6" opacity="0.55"/>
+      </svg>
+      <span data-text="common.siteName">مكتبة الباك</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" data-text-attr="aria-label:common.menuLabel" aria-label="القائمة">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" data-text-attr="aria-label:common.navLabel" aria-label="التنقل الرئيسي">
+      <a href="#top" data-text="nav.home">الرئيسية</a>
+      <a href="#subjects" data-text="nav.subjects">المواد</a>
+      <a href="info.html" data-text="nav.tips">نصائح عامة</a>
+      <a href="#feedback" data-text="nav.feedback">رأيك</a>
+      <a href="#about" data-text="nav.about">من نحن</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <svg class="hero-ornament" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+      <rect x="45" y="45" width="110" height="110" pathLength="1"/>
+      <rect x="45" y="45" width="110" height="110" transform="rotate(45 100 100)" pathLength="1"/>
+      <circle cx="100" cy="100" r="38" pathLength="1"/>
+      <circle cx="100" cy="100" r="92" pathLength="1"/>
+    </svg>
+
+    <div class="hero-inner">
+      <p class="eyebrow-plain hero-enter d1">
+        <span data-text="home.eyebrow">مكتبة رقمية لطلبة البكالوريا</span>
+        <span class="hero-countdown" id="heroCountdown" hidden></span>
+      </p>
+      <h1 class="hero-title hero-enter d2" data-text="home.heroTitle">كل ما تحتاجه للبكالوريا،
+في مكان واحد هادئ.</h1>
+      <p class="hero-sub hero-enter d3" data-text="home.heroSub">دروس وملخصات ومواضيع سابقة مرتّبة حسب المادة، مع نصائح عملية تساعدك على المراجعة بثبات.</p>
+      <div class="hero-actions hero-enter d4">
+        <a class="btn btn-primary" href="#subjects" data-text="home.ctaPrimary">تصفّح المواد</a>
+        <a class="btn btn-ghost" href="info.html" data-text="home.ctaSecondary">نصائح المراجعة</a>
+      </div>
+      <p class="resume-slot hero-enter d5" id="resumeSlot" hidden></p>
+    </div>
+  </section>
+
+  <section class="subjects" id="subjects" aria-labelledby="subjectsTitle">
+    <div class="section-head">
+      <span class="section-mark" aria-hidden="true"></span>
+      <h2 id="subjectsTitle" data-text="home.subjectsTitle">المواد</h2>
+      <p data-text="home.subjectsSub">اختر مادة لتصل إلى مواردها ونصائحها الخاصة.</p>
+    </div>
+    <div class="subjects-grid" id="subjectsGrid" data-reveal-group></div>
+  </section>
+
+  <section class="feedback" id="feedback" aria-labelledby="feedbackTitle">
+    <div class="feedback-inner" data-reveal-group>
+      <div class="section-head" data-reveal>
+        <span class="section-mark" aria-hidden="true"></span>
+        <h2 id="feedbackTitle" data-text="home.feedbackTitle">شاركنا رأيك</h2>
+        <p data-text="home.feedbackSub">ملاحظاتك تساعدنا على تحسين المكتبة وإضافة ما ينقصها.</p>
+      </div>
+
+      <form class="feedback-form" id="feedbackForm" novalidate data-reveal>
+        <div class="field-row">
+          <div class="field">
+            <label for="fbName" data-text="form.nameLabel">الاسم (اختياري)</label>
+            <input type="text" id="fbName" name="name" maxlength="60" autocomplete="given-name" data-text-attr="placeholder:form.namePlaceholder" placeholder="اسمك">
+          </div>
+          <div class="field">
+            <label for="fbEmail">البريد الإلكتروني (اختياري)</label>
+            <input type="email" id="fbEmail" name="email" autocomplete="email" placeholder="بريدك الإلكتروني">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fbSubject" data-text="form.subjectLabel">المادة المعنية</label>
+          <select id="fbSubject" name="subject">
+            <option value="" data-text="form.subjectGeneral">عام</option>
+          </select>
+        </div>
+
+        <fieldset class="rating-field">
+          <legend data-text="form.ratingLabel">تقييمك للمكتبة</legend>
+          <div class="rating">
+            <button type="button" class="star" data-value="1" aria-pressed="false" aria-label="1 من 5">★</button>
+            <button type="button" class="star" data-value="2" aria-pressed="false" aria-label="2 من 5">★</button>
+            <button type="button" class="star" data-value="3" aria-pressed="false" aria-label="3 من 5">★</button>
+            <button type="button" class="star" data-value="4" aria-pressed="false" aria-label="4 من 5">★</button>
+            <button type="button" class="star" data-value="5" aria-pressed="false" aria-label="5 من 5">★</button>
+          </div>
+          <input type="hidden" id="fbRating" name="rating" value="0">
+        </fieldset>
+
+        <div class="field">
+          <label for="fbMessage" data-text="form.messageLabel">رسالتك</label>
+          <textarea id="fbMessage" name="message" rows="5" maxlength="1000" required data-text-attr="placeholder:form.messagePlaceholder" placeholder="اكتب ملاحظتك أو اقتراحك هنا…"></textarea>
+        </div>
+
+        <!-- honeypot: invisible to people, tempting to bots -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="fbWebsite">Website</label>
+          <input type="text" id="fbWebsite" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-foot">
+          <button type="submit" class="btn btn-primary" data-text="form.submit">إرسال</button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="aboutTitle">
+    <div class="about-inner" data-reveal-group>
+      <span class="section-mark" aria-hidden="true" data-reveal></span>
+      <h2 id="aboutTitle" data-text="home.aboutTitle" data-reveal>من نحن</h2>
+      <div class="about-body" data-text-list="home.aboutParagraphs" data-item-class="about-text" data-reveal>
+        <p class="about-text">مكتبة الباك مبادرة طلابية مستقلة وغير ربحية، هدفها جمع موارد التحضير لامتحان البكالوريا في مكان واحد منظّم وسهل الوصول.</p>
+        <p class="about-text">نختار المحتوى بعناية ونرتّبه حسب المواد والمحاور، ونحدّثه باستمرار بناءً على ملاحظاتكم. كل شيء مجاني ومتاح للجميع.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span class="section-mark" aria-hidden="true"></span>
+  <p data-text="common.footer">© مكتبة الباك — مرجع مجاني لطلبة البكالوريا.</p>
+  <p class="footer-note" data-text="common.footerNote">كل الموارد مستضافة على Google Drive وتُفتح في نافذة جديدة.</p>
+  <a class="dev-footer-link" id="devFooterLink" href="dev.html" hidden data-text="common.devLink">لوحة الإدارة</a>
+</footer>
+</body>
+</html>

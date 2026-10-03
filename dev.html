@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#F6F4EC">
+  <link rel="icon" href="assets/favicon.svg?v=1.0.0" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/tajawal-400-arabic.woff2?v=1.0.0" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/arefruqaa-700-arabic.woff2?v=1.0.0" as="font" type="font/woff2" crossorigin>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>لوحة الإدارة — مكتبة الباك</title>
+  <link rel="stylesheet" href="assets/style.css?v=1.0.0">
+  <script src="assets/data.js?v=1.0.0" defer></script>
+  <script src="assets/site-config.js?v=1.0.0" defer></script>
+  <script src="assets/core.js?v=1.0.0" defer></script>
+  <script src="assets/dev.js?v=1.0.0" defer></script>
+</head>
+<body class="page-dev">
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<header class="site-header dev-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M14 7.5C11.5 5.8 8 5.2 4.5 5.6v15c3.5-.4 7 .2 9.5 1.9 2.5-1.7 6-2.3 9.5-1.9v-15c-3.5-.4-7 .2-9.5 1.9Zm0 0v15" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+      <span>لوحة الإدارة</span>
+    </a>
+    <div class="dev-header-actions">
+      <a class="dev-header-link" href="index.html">عرض الموقع</a>
+      <button type="button" class="dev-header-link" id="lockBtn" hidden>قفل اللوحة</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ======== lock screen ======== -->
+  <section class="dev-lock" id="devLock">
+    <form class="dev-lock-box" id="devLockForm" autocomplete="off">
+      <span class="section-mark" aria-hidden="true"></span>
+      <h1>لوحة الإدارة</h1>
+      <p>أدخل رمز الدخول للمتابعة.</p>
+      <label class="visually-hidden" for="devPassInput">رمز الدخول</label>
+      <input type="password" id="devPassInput" autocomplete="current-password" required>
+      <p class="dev-lock-error" id="devLockError" role="alert"></p>
+      <button type="submit" class="btn btn-primary">دخول</button>
+    </form>
+  </section>
+
+  <!-- ======== panel ======== -->
+  <div class="dev-shell" id="devShell" hidden>
+    <div class="dev-notice">
+      <strong>كيف تعمل هذه اللوحة؟</strong>
+      التعديلات هنا لا تُنشر تلقائيًا. عند الانتهاء اضغط «تنزيل data.js» ثم ارفع الملف مكان <code dir="ltr">assets/data.js</code> على الاستضافة.
+      تُحفظ مسودتك تلقائيًا في هذا المتصفح فقط حتى لا تضيع عند إعادة التحميل.
+      رمز الدخول مجرد حاجز بسيط وليس حماية حقيقية — لا شيء حساس يعتمد عليه.
+    </div>
+
+    <div class="dev-tabs" role="tablist" aria-label="أقسام اللوحة" id="devTabs">
+      <button type="button" class="dev-tab is-active" role="tab" id="tab-feedback" aria-controls="panel-feedback" aria-selected="true">الآراء الواردة</button>
+      <button type="button" class="dev-tab" role="tab" id="tab-subjects" aria-controls="panel-subjects" aria-selected="false" tabindex="-1">المواد</button>
+      <button type="button" class="dev-tab" role="tab" id="tab-info" aria-controls="panel-info" aria-selected="false" tabindex="-1">النصائح العامة</button>
+      <button type="button" class="dev-tab" role="tab" id="tab-text" aria-controls="panel-text" aria-selected="false" tabindex="-1">نصوص الموقع</button>
+      <button type="button" class="dev-tab" role="tab" id="tab-settings" aria-controls="panel-settings" aria-selected="false" tabindex="-1">الإعدادات</button>
+    </div>
+
+    <!-- feedback -->
+    <section class="dev-panel-section" role="tabpanel" id="panel-feedback" aria-labelledby="tab-feedback">
+      <div class="admin-toolbar">
+        <p class="dev-status-line" id="adminStatus" role="status"></p>
+        <div class="admin-toolbar-actions">
+          <div class="dev-token" id="tokenWrap" hidden>
+            <label class="visually-hidden" for="adminToken">رمز الخدمة</label>
+            <input type="password" id="adminToken" autocomplete="off" placeholder="رمز الخدمة (ADMIN_TOKEN)" dir="ltr">
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm" id="refreshFeedback">تحديث</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="clearLocalFeedback" hidden>مسح الآراء المحلية</button>
+        </div>
+      </div>
+      <div class="feedback-list" id="feedbackList"></div>
+    </section>
+
+    <!-- subjects -->
+    <section class="dev-panel-section" role="tabpanel" id="panel-subjects" aria-labelledby="tab-subjects" hidden>
+      <div class="dev-section-head">
+        <h2 class="dev-section-title">المواد</h2>
+        <button type="button" class="btn btn-ghost btn-sm" id="addSubject">+ إضافة مادة</button>
+      </div>
+      <div id="subjectsEditor"></div>
+    </section>
+
+    <!-- info sections -->
+    <section class="dev-panel-section" role="tabpanel" id="panel-info" aria-labelledby="tab-info" hidden>
+      <div class="dev-section-head">
+        <h2 class="dev-section-title">محاور صفحة النصائح العامة</h2>
+        <button type="button" class="btn btn-ghost btn-sm" id="addInfoSection">+ إضافة محور</button>
+      </div>
+      <div id="infoEditor"></div>
+    </section>
+
+    <!-- site text -->
+    <section class="dev-panel-section" role="tabpanel" id="panel-text" aria-labelledby="tab-text" hidden>
+      <h2 class="dev-section-title">نصوص الموقع</h2>
+      <p class="dev-field-hint dev-intro">كل نص يظهر للزوار موجود هنا. الكلمات بين معقوفين مثل <code dir="ltr">{name}</code> و<code dir="ltr">{year}</code> تُستبدل تلقائيًا — اتركها كما هي.</p>
+      <label class="dev-search">
+        <span class="visually-hidden">بحث في النصوص</span>
+        <input type="search" id="textSearch" placeholder="ابحث عن نص أو قسم…">
+      </label>
+      <div id="textEditor"></div>
+    </section>
+
+    <!-- settings -->
+    <section class="dev-panel-section" role="tabpanel" id="panel-settings" aria-labelledby="tab-settings" hidden>
+      <h2 class="dev-section-title">الخصائص الاختيارية</h2>
+      <div id="settingsEditor"></div>
+
+      <h2 class="dev-section-title">تغيير رمز الدخول</h2>
+      <div class="dev-card">
+        <p class="dev-field-hint">اكتب رمزًا جديدًا ثم انسخ السطر الناتج والصقه في <code dir="ltr">assets/site-config.js</code> مكان السطر الحالي. يُخزَّن الرمز كبصمة (hash) وليس كنص.</p>
+        <div class="dev-field">
+          <label for="newPass">الرمز الجديد</label>
+          <input type="password" id="newPass" autocomplete="new-password" dir="ltr">
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" id="makeHash">توليد السطر</button>
+        <textarea class="dev-code" id="hashOut" rows="2" readonly spellcheck="false" hidden></textarea>
+      </div>
+    </section>
+
+    <!-- actions -->
+    <div class="dev-actions" id="devActions">
+      <button type="button" class="btn btn-primary" id="buildBtn">تنزيل data.js</button>
+      <button type="button" class="btn btn-ghost" id="copyBtn">نسخ المحتوى</button>
+      <button type="button" class="btn btn-ghost btn-danger" id="discardBtn">تجاهل المسودة</button>
+      <p class="dev-status" id="devStatus" role="status" aria-live="polite"></p>
+    </div>
+
+    <details class="dev-advanced">
+      <summary>معاينة الملف الناتج</summary>
+      <textarea class="dev-code" id="rawPreview" readonly spellcheck="false"></textarea>
+    </details>
+  </div>
+</main>
+</body>
+</html>
